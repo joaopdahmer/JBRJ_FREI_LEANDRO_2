@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trilha Frei Leandro</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Estilos gerais */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Evita a barra de rolagem global */
+        }
+        /* Container principal */
+        .container {
+            display: flex;
+            height: 100vh; /* Altura total da janela */
+        }
+        /* Estilos para o mapa */
+        #map {
+            width: 50%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        /* Estilos para a seção de narrativas */
+        .narratives {
+            width: 50%;
+            margin-left: 50%; /* Para ficar ao lado do mapa */
+            overflow-y: scroll;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        /* Estilos para cada seção de narrativa */
+        .plant-section {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+        .plant-section img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .plant-section h2 {
+            margin-top: 0;
+        }
+    </style>
+    <!-- Inclua o CSS do Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+
+<div class="container">
+    <!-- Div onde o mapa será renderizado -->
+    <div id="map"></div>
+
+    <!-- Seção das narrativas -->
+    <div class="narratives">
+        <!-- Cada narrativa possui um ID correspondente ao ID da planta -->
+        <!-- Narrativas das plantas (1 a 10) -->
+
+        <!-- Planta 1: Chá (Camellia sinensis) -->
+        <div class="plant-section" id="plant-1">
+            <h2>Chá (Camellia sinensis)</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Camellia_sinensis_drawing.jpg" alt="Chá">
+            <p>
+                Frei Leandro do Sacramento desempenhou um papel crucial na introdução do chá no Brasil no início do século XIX. Reconhecendo o valor econômico e cultural da <em>Camellia sinensis</em>, ele trabalhou para aclimatar essa planta ao solo e clima brasileiros. No Jardim Botânico do Rio de Janeiro, Frei Leandro cultivou plantas de chá e promoveu pesquisas sobre suas técnicas de cultivo. Seu trabalho pioneiro abriu caminho para as primeiras plantações de chá no país, contribuindo para a diversificação da agricultura brasileira e para o desenvolvimento econômico da época.
+            </p>
+        </div>
+
+        <!-- Planta 2: Teca (Tectona grandis) -->
+        <div class="plant-section" id="plant-2">
+            <h2>Teca (Tectona grandis)</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Starr_010304-0485_Tectona_grandis.jpg/1024px-Starr_010304-0485_Tectona_grandis.jpg" alt="Teca">
+            <p>
+                A teca, conhecida por sua madeira de alta qualidade e durabilidade, foi introduzida no Brasil graças aos esforços de Frei Leandro. Ele reconheceu o potencial dessa espécie para a indústria madeireira nacional. No Jardim Botânico, Frei Leandro plantou mudas de teca e estudou seu crescimento em condições tropicais. Sua pesquisa ajudou a demonstrar a viabilidade do cultivo da teca no Brasil, incentivando seu uso em construções navais e na marcenaria de alto padrão.
+            </p>
+        </div>
+
+        <!-- Planta 3: Fruta-pão (Artocarpus altilis) -->
+        <div class="plant-section" id="plant-3">
+            <h2>Fruta-pão (Artocarpus altilis)</h2>
+            <img src="https://cloud.jbrj.gov.br/apps/files_sharing/publicpreview/6FSkFpeJcrN8npF?file=/&fileId=17944112&x=1927&y=920&a=true&etag=b086dc8c875719c27b005e285a81f023" alt="Fruta-pão">
+            <p>
+                A fruta-pão foi trazida ao Brasil por Frei Leandro com o objetivo de diversificar a alimentação e oferecer uma fonte nutritiva de alimento. Ele plantou árvores de fruta-pão no Jardim Botânico e conduziu estudos sobre seu cultivo e aproveitamento. A fruta-pão mostrou-se uma alternativa valiosa para a alimentação da população, especialmente em períodos de escassez, devido ao seu alto rendimento e valor nutricional. Os esforços de Frei Leandro contribuíram para a disseminação dessa espécie em várias regiões do país.
+            </p>
+        </div>
+
+        <!-- Planta 4: Esponja-de-ouro (Senna spectabilis) -->
+        <div class="plant-section" id="plant-4">
+            <h2>Esponja-de-ouro (Senna spectabilis)</h2>
+            <img src="https://cloud.jbrj.gov.br/apps/files_sharing/publicpreview/SJEBgty3Zspf2WK?file=/&fileId=17955227&x=1927&y=920&a=true&etag=0b6a4b856343f59f459f79b898da422e" alt="Esponja-de-ouro">
+            <p>
+                A esponja-de-ouro, com suas flores amarelas vibrantes, chamou a atenção de Frei Leandro por seu potencial ornamental e medicinal. Ele cultivou essa espécie no Jardim Botânico, estudando suas características e possíveis aplicações. Além de embelezar paisagens urbanas, a esponja-de-ouro tem propriedades medicinais utilizadas na medicina tradicional. O trabalho de Frei Leandro ajudou a popularizar essa planta, incentivando seu uso em projetos de paisagismo e estudos farmacêuticos.
+            </p>
+        </div>
+
+        <!-- Planta 5: Biribá (Rollinia mucosa) -->
+        <div class="plant-section" id="plant-5">
+            <h2>Biribá (Rollinia mucosa)</h2>
+            <img src="https://cloud.jbrj.gov.br/apps/files_sharing/publicpreview/pBdB65BDrQPeBHX?file=/&fileId=17944122&x=1927&y=920&a=true&etag=096e795f612361b3ff19f0bc417a85bd" alt="Biribá">
+            <p>
+                Interessado na riqueza das frutas tropicais, Frei Leandro cultivou o biribá no Jardim Botânico. O biribá é conhecido por seus frutos doces e saborosos, apreciados tanto in natura quanto em preparações culinárias. Frei Leandro estudou as técnicas de cultivo e propagação do biribá, contribuindo para o conhecimento agrícola da época e incentivando o cultivo dessa fruta em diferentes regiões do Brasil.
+            </p>
+        </div>
+
+        <!-- Planta 6: Sibipiruna (Caesalpinia peltophoroides) -->
+        <div class="plant-section" id="plant-6">
+            <h2>Sibipiruna (Caesalpinia peltophoroides)</h2>
+            <img src="https://cloud.jbrj.gov.br/apps/files_sharing/publicpreview/JkRCiBY5BGmXbar?file=/&fileId=17946713&x=1927&y=920&a=true&etag=23eab4b83e6242cb0615d35154f39796" alt="Sibipiruna">
+            <p>
+                Nativa do Brasil, a sibipiruna foi uma das espécies promovidas por Frei Leandro para a arborização urbana. Ele reconheceu a importância de árvores nativas na composição paisagística e na conservação ambiental. Com suas flores amarelas exuberantes, a sibipiruna foi amplamente plantada em espaços públicos graças aos esforços de Frei Leandro, contribuindo para o embelezamento das cidades e para a preservação da flora brasileira.
+            </p>
+        </div>
+
+        <!-- Planta 7: Abacate (Persea americana) -->
+        <div class="plant-section" id="plant-7">
+            <h2>Abacate (Persea americana)</h2>
+            <img src="https://cloud.jbrj.gov.br/apps/files_sharing/publicpreview/3Wf4Q3Kj4RWDgEs?file=/&fileId=17946734&x=1927&y=920&a=true&etag=0813af235bcf5f414f6154895af48f7a" alt="Abacate">
+            <p>
+                O abacate, originário das Américas, foi objeto de estudo de Frei Leandro devido ao seu alto valor nutricional e potencial econômico. No Jardim Botânico, ele conduziu pesquisas sobre o cultivo do abacateiro, visando otimizar sua produção no Brasil. Seus estudos ajudaram a difundir o consumo do abacate e a incentivar a expansão de seu cultivo em diferentes regiões do país.
+            </p>
+        </div>
+
+        <!-- Planta 8: Árvore-do-carvão (Calliandra brevipes) -->
+        <div class="plant-section" id="plant-8">
+            <h2>Árvore-do-carvão (Calliandra brevipes)</h2>
+            <img src="https://cloud.jbrj.gov.br/apps/files_sharing/publicpreview/s8MjLATgZYYNwEL?file=/&fileId=17946774&x=1927&y=920&a=true&etag=7a36eef3361525dc41d6fa10d826ce9e" alt="Árvore-do-carvão">
+            <p>
+                Preocupado com fontes sustentáveis de energia, Frei Leandro estudou a árvore-do-carvão, conhecida por sua madeira de queima eficiente. Ele pesquisou o cultivo dessa espécie no Jardim Botânico, avaliando seu potencial para produção de carvão vegetal. Seus esforços contribuíram para o desenvolvimento de práticas mais sustentáveis na produção de energia, reduzindo a pressão sobre as florestas nativas.
+            </p>
+        </div>
+
+        <!-- Planta 9: Olho-de-boi (Machaerium acutifolium) -->
+        <div class="plant-section" id="plant-9">
+            <h2>Olho-de-boi (Machaerium acutifolium)</h2>
+            <img src="https://cloud.jbrj.gov.br/apps/files_sharing/publicpreview/QNskkTaRdamRAFT?file=/&fileId=17946810&x=1927&y=920&a=true&etag=6b21e8018fa5dda759e9d88e223c800d" alt="Olho-de-boi">
+            <p>
+                O olho-de-boi chamou a atenção de Frei Leandro por suas propriedades medicinais e seu uso na marcenaria. Ele estudou essa árvore no Jardim Botânico, documentando suas características e possíveis aplicações. As sementes duras e brilhantes do olho-de-boi também eram usadas em artesanatos e joias. A pesquisa de Frei Leandro ajudou a ampliar o conhecimento sobre essa espécie e seu potencial econômico.
+            </p>
+        </div>
+
+        <!-- Planta 10: Jaqueira (Artocarpus heterophyllus) -->
+        <div class="plant-section" id="plant-10">
+            <h2>Jaqueira (Artocarpus heterophyllus)</h2>
+            <img src="https://cloud.jbrj.gov.br/apps/files_sharing/publicpreview/TDMYgQJGW7QirAo?file=/&fileId=17946839&x=1927&y=920&a=true&etag=109dd2b574c1d36a21c667334b562643" alt="Jaqueira">
+            <p>
+                A jaqueira foi introduzida no Brasil por meio dos esforços de Frei Leandro, que reconheceu o valor nutricional e a versatilidade da fruta. No Jardim Botânico, ele cultivou jaqueiras e estudou sua adaptação ao clima brasileiro. A jaca tornou-se uma importante fonte alimentar, utilizada em diversas preparações culinárias. O trabalho de Frei Leandro foi fundamental para a disseminação da jaqueira no país.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Inclua os scripts do Leaflet -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- Inclua o plugin Leaflet GPX -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.5.0/gpx.min.js"></script>
+
+<script>
+    // Inicializa o mapa com o CRS padrão (EPSG:3857)
+    var map = L.map('map', {
+        zoomControl: false,
+        maxZoom: 19
+    }).setView([-22.9680, -43.2230], 17);
+
+    // Adiciona a camada de tiles do OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 19
+    }).addTo(map);
+
+    // Carrega o arquivo GPX da trilha usando o Leaflet GPX
+    var gpxLayer = new L.GPX('trilha_frei_leandro.gpx', {
+        async: true,
+        marker_options: {
+            startIconUrl: null,
+            endIconUrl: null,
+            shadowUrl: null
+        },
+        polyline_options: {
+            color: 'blue',
+            opacity: 0.75,
+            weight: 5,
+            lineCap: 'round'
+        }
+    }).on('loaded', function(e) {
+        // Opcional: ajustar o mapa aos limites da trilha
+        // map.fitBounds(e.target.getBounds());
+    }).addTo(map);
+
+    // Dados GeoJSON das plantas (todas as 10 plantas)
+    var plantasGeoJSON = {
+        "type": "FeatureCollection",
+        "name": "plantas_frei_leandro",
+        "features": [
+            { "type": "Feature", "properties": { "id": 1 }, "geometry": { "type": "Point", "coordinates": [ -43.222145588873275, -22.969239816399224 ] } },
+            { "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ -43.22322470227887, -22.970023005533903 ] } },
+            { "type": "Feature", "properties": { "id": 3 }, "geometry": { "type": "Point", "coordinates": [ -43.224356107523484, -22.970087181881812 ] } },
+            { "type": "Feature", "properties": { "id": 4 }, "geometry": { "type": "Point", "coordinates": [ -43.226850665935757, -22.968098903547496 ] } },
+            { "type": "Feature", "properties": { "id": 5 }, "geometry": { "type": "Point", "coordinates": [ -43.225869005502922, -22.967514185710993 ] } },
+            { "type": "Feature", "properties": { "id": 6 }, "geometry": { "type": "Point", "coordinates": [ -43.227575620976978, -22.967038805356093 ] } },
+            { "type": "Feature", "properties": { "id": 7 }, "geometry": { "type": "Point", "coordinates": [ -43.228031986117664, -22.966770215455586 ] } },
+            { "type": "Feature", "properties": { "id": 8 }, "geometry": { "type": "Point", "coordinates": [ -43.226009242707626, -22.966014360691322 ] } },
+            { "type": "Feature", "properties": { "id": 9 }, "geometry": { "type": "Point", "coordinates": [ -43.223996006904699, -22.967685916864205 ] } },
+            { "type": "Feature", "properties": { "id": 10 }, "geometry": { "type": "Point", "coordinates": [ -43.224678771939402, -22.96835679739003 ] } }
+        ]
+    };
+
+    // Variáveis globais para referência aos marcadores das plantas
+    var plantMarkers = {};
+    var currentPlantId = null; // Para rastrear qual planta está em foco
+
+    // Define o ícone personalizado para as plantas (usando o link do pin fornecido)
+    var plantIcon = L.icon({
+        iconUrl: 'https://cloud.jbrj.gov.br/apps/files_sharing/publicpreview/PwkmGYHBiPLXqkQ?file=/&fileId=17944130&x=1927&y=920&a=true&etag=8baaf56e22ff20721c74c68b82a9eb73',
+        iconSize: [32, 37],
+        iconAnchor: [16, 37],
+        popupAnchor: [0, -28]
+    });
+
+    // Adiciona os pontos das plantas ao mapa
+    L.geoJSON(plantasGeoJSON, {
+        pointToLayer: function(feature, latlng) {
+            var marker = L.marker(latlng, { icon: plantIcon });
+
+            // Armazena o marcador em uma variável global para referência posterior
+            plantMarkers[feature.properties.id] = marker;
+
+            return marker;
+        },
+        onEachFeature: function(feature, layer) {
+            // Cria popups com informações das plantas
+            var plantNames = {
+                1: 'Chá (Camellia sinensis)',
+                2: 'Teca (Tectona grandis)',
+                3: 'Fruta-pão (Artocarpus altilis)',
+                4: 'Esponja-de-ouro (Senna spectabilis)',
+                5: 'Biribá (Rollinia mucosa)',
+                6: 'Sibipiruna (Caesalpinia peltophoroides)',
+                7: 'Abacate (Persea americana)',
+                8: 'Árvore-do-carvão (Calliandra brevipes)',
+                9: 'Olho-de-boi (Machaerium acutifolium)',
+                10: 'Jaqueira (Artocarpus heterophyllus)'
+            };
+
+            var plantDescriptions = {
+                1: 'Frei Leandro introduziu o chá no Brasil, promovendo seu cultivo local e contribuindo para a economia.',
+                2: 'A teca foi plantada para estudar seu potencial uso na indústria madeireira devido à sua madeira durável.',
+                3: 'A fruta-pão foi cultivada como alternativa alimentar básica, visando melhorar a nutrição da população.',
+                4: 'Esponja-de-ouro foi estudada por suas flores vibrantes e usos medicinais potenciais.',
+                5: 'Biribá foi apreciada por seus frutos saborosos e seu potencial agrícola.',
+                6: 'Sibipiruna foi promovida para uso ornamental na arborização urbana e conservação ambiental.',
+                7: 'Abacate foi estudado por seu valor nutricional e potencial econômico no mercado agrícola.',
+                8: 'Árvore-do-carvão foi explorada como fonte sustentável de combustível e práticas energéticas.',
+                9: 'Olho-de-boi foi pesquisado por suas sementes ornamentais e propriedades medicinais.',
+                10: 'Jaqueira foi introduzida como valiosa fonte alimentar e cultural.'
+            };
+
+            var popupContent = '<strong>' + plantNames[feature.properties.id] + '</strong><br>' +
+                               plantDescriptions[feature.properties.id];
+            layer.bindPopup(popupContent);
+        }
+    }).addTo(map);
+
+    // Função para centralizar e dar zoom no marcador correspondente usando flyTo
+    function focusOnPlant(plantId) {
+        var marker = plantMarkers[plantId];
+        if (marker) {
+            map.flyTo(marker.getLatLng(), 19, { animate: true, duration: 1.5 });
+            marker.openPopup();
+        }
+    }
+
+    // Função para resetar o mapa ao estado padrão usando flyTo
+    function resetMap() {
+        map.flyTo([-22.9680, -43.2230], 17, { animate: true, duration: 1.5 });
+        // Fecha todos os popups
+        map.closePopup();
+    }
+
+    // Observa a rolagem das narrativas
+    var options = {
+        root: document.querySelector('.narratives'),
+        rootMargin: '0px',
+        threshold: 0.5 // Quando 50% do elemento estiver visível
+    };
+
+    var observer = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+            var plantId = entry.target.id.split('-')[1];
+            if (entry.isIntersecting) {
+                // Quando a narrativa entra em foco
+                currentPlantId = plantId;
+                focusOnPlant(plantId);
+            } else {
+                // Quando a narrativa sai de foco
+                if (currentPlantId === plantId) {
+                    resetMap();
+                    currentPlantId = null;
+                }
+            }
+        });
+    }, options);
+
+    // Observa cada seção de planta
+    document.querySelectorAll('.plant-section').forEach(function(section) {
+        observer.observe(section);
+    });
+
+</script>
+
+</body>
+</html>
